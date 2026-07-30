@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0b0f19;
+  color: #e5e7eb;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- Stats bar --- */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #11162469;
+  border-bottom: 1px solid #1f2937;
+  flex-shrink: 0;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 16px;
+  display: block;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #1f2937;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7280;
+}
+
+.status-connected .status-dot { background: #22c55e; }
+.status-connecting .status-dot { background: #eab308; }
+.status-disconnected .status-dot { background: #ef4444; }
+
+/* --- Body layout --- */
+.app-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.sidebar, .alert-feed {
+  width: 260px;
+  flex-shrink: 0;
+  background: #111827;
+  border-right: 1px solid #1f2937;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.alert-feed {
+  border-right: none;
+  border-left: 1px solid #1f2937;
+}
+
+.panel-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin: 0 0 10px;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+/* --- Vehicle list --- */
+.vehicle-list, .alert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vehicle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #0b0f19;
+}
+
+.vehicle-row:hover { background: #1f2937; }
+.vehicle-row-selected { outline: 1px solid #3388ff; }
+
+.vehicle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.vehicle-name {
+  flex: 1;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vehicle-speed {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.vehicle-empty, .alert-empty {
+  color: #6b7280;
+  font-size: 13px;
+  padding: 8px;
+}
+
+/* --- Alert feed --- */
+.alert-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #0b0f19;
+  font-size: 12px;
+}
+
+.alert-badge {
+  grid-row: span 2;
+  align-self: center;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.alert-enter .alert-badge { background: #16a34a33; color: #4ade80; }
+.alert-exit .alert-badge { background: #ea580c33; color: #fb923c; }
+
+.alert-text { line-height: 1.3; }
+
+.alert-time {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+/* --- Draw toolbar (floats over the map) --- */
+.draw-toolbar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #111827ee;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+}
+
+.draw-hint {
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary { background: #3388ff; color: white; }
+.btn-success { background: #22c55e; color: #06210f; }
+.btn-success:disabled { background: #374151; color: #6b7280; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: #9ca3af; border: 1px solid #374151; }
+
+.maplibregl-popup-content {
+  background: #111827;
+  color: #e5e7eb;
+  font-size: 12px;
+}
