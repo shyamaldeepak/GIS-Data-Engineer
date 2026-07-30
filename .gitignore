@@ -12,7 +12,11 @@ venv/
 node_modules/
 frontend/dist/
 frontend/.vite/
+frontend/*.tsbuildinfo
 npm-debug.log*
+
+# Editor workspace settings
+.vscode/
 
 # Docker
 *.pid
