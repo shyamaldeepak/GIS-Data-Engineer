@@ -119,7 +119,7 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Then open **http://localhost:3000**. That's it — the database schema, backend, simulator, and frontend all start together.
+Then open **http://localhost:3100**. That's it — the database schema, backend, simulator, and frontend all start together.
 
 To stop:
 
@@ -139,7 +139,7 @@ docker compose up db
 cd backend
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-export DATABASE_URL=postgresql://gis_user:change_me_locally@localhost:5432/fleet_tracking
+export DATABASE_URL=postgresql://gis_user:change_me_locally@localhost:5433/fleet_tracking
 uvicorn app.main:app --reload
 
 # 3. Frontend (in a second terminal)
@@ -160,7 +160,7 @@ Then open **http://localhost:5173** (Vite's dev server proxies `/api` and `/ws` 
 | `SIM_TICK_SECONDS` | `1` | Simulator update interval |
 | `SIM_CITY_BBOX` | downtown San Francisco | `min_lon,min_lat,max_lon,max_lat` bounding box for the simulated road grid |
 | `POSITION_RETENTION_HOURS` | `24` | How long time-series position history is kept before the hourly retention sweep purges it |
-| `CORS_ORIGINS` | `http://localhost:3000,http://localhost:5173` | Allowed frontend origins |
+| `CORS_ORIGINS` | `http://localhost:3100,http://localhost:5173` | Allowed frontend origins |
 | `VITE_MAP_STYLE_URL` | CARTO dark-matter style | MapLibre basemap style URL (no key required) |
 
 ## API Reference

@@ -39,7 +39,7 @@ docker compose up --build
 
 Wait. Watch words scroll on screen (that normal, that computer thinking). When words stop scrolling fast, go to:
 
-**http://localhost:3000**
+**http://localhost:3100**
 
 Car-shapes should be moving. If moving = GOOD. UGG SUCCESS.
 
@@ -61,7 +61,7 @@ docker compose up db
 cd backend
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-export DATABASE_URL=postgresql://gis_user:change_me_locally@localhost:5432/fleet_tracking
+export DATABASE_URL=postgresql://gis_user:change_me_locally@localhost:5433/fleet_tracking
 uvicorn app.main:app --reload
 
 # Step 3 (NEW cave-window/terminal): wake up map-screen
