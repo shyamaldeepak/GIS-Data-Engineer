@@ -21,6 +21,37 @@ services:
     networks:
       - gisnet
 
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      SIM_VEHICLE_COUNT: ${SIM_VEHICLE_COUNT:-12}
+      SIM_TICK_SECONDS: ${SIM_TICK_SECONDS:-1}
+      SIM_CITY_BBOX: ${SIM_CITY_BBOX:--122.4294,37.7599,-122.3959,37.7899}
+      POSITION_RETENTION_HOURS: ${POSITION_RETENTION_HOURS:-24}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    networks:
+      - gisnet
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_MAP_STYLE_URL: ${VITE_MAP_STYLE_URL:-https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json}
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    networks:
+      - gisnet
+
 networks:
   gisnet:
     driver: bridge
