@@ -1,0 +1,28 @@
+# Env
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Docker
+*.pid
+
+# OS
+.DS_Store
+
+# Editors
+.idea/
+*.swp
+
+# Postgres data (if ever run outside Docker)
+pgdata/
