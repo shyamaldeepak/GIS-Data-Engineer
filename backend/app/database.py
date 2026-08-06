@@ -21,5 +21,6 @@ async def create_pool(max_attempts: int = 8) -> asyncpg.Pool:
                 raise
             logger.warning("Database not ready (attempt %d/%d): %s", attempt, max_attempts, exc)
             await asyncio.sleep(delay)
+            
             delay = min(delay * 1.5, 10)
     raise RuntimeError("unreachable")
